@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Food Tracker</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .navbar-inverse {
+      background-color: black; /* Set the entire navbar background color to black */
+      border: none; /* Remove the border */
+    }
+
+    .navbar-nav>li>a {
+      color: #fff !important; /* Set the text color of nav items to white */
+    }
+
+    .navbar-nav>li>a:hover,
+    .navbar-nav>li>a:focus {
+      background-color: black; /* Keep the background color same as the navbar */
+    }
+
+    .navbar-brand {
+      font-size: 24px; /* Adjust font size */
+      font-weight: bold; /* Adjust font weight */
+    }
+
+    .logo-text {
+      font-size: 20px; /* Adjust font size */
+      font-weight: bold; /* Adjust font weight */
+      color: #fff; /* Adjust font color */
+      margin: 0; /* Remove margin */
+    }
+
+    .highlight {
+      color: #6A5ACD !important; /* Set the text color of "ES" to light navy blue */
+      padding: 5px; /* Add some padding for better visibility */
+      border-radius: 3px; /* Add rounded corners */
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="">
+          <span class="logo-text">FOOD TRACK</span>
+        </a>
+      </div>
+
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/home">Home</a></li>
+        <li class="active"><a href="/additem">Additems</a></li>
+        <li class="active"><a href="/about">AboutUs</a></li>
+        <li style="font-size: 24px; font-weight: bold;">
+          <span class="highlight">ES</span>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/sign"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+
+        <li>
+          {% if user.is_authenticated %}
+          <a class="nav-link" href="{% url 'logout' %}">Logout </a>
+          {% else %}
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+</body>
+
+</html>
