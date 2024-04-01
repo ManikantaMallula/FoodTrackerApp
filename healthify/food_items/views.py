@@ -25,6 +25,7 @@ def additem(request):
     stud = FoodItem.objects.all()
     return render(request, 'additem.html', {'form': fm, 'stu': stud})
 
+@login_required(login_url='/login/')
 def home(request):
     if request.method == 'POST':
         form = AddDateForm(request.POST)
